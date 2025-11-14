@@ -48,7 +48,7 @@
     }
     
     .header-logo {
-      height: 60px;
+      height: 80px;
       width: auto;
     }
     
@@ -127,7 +127,7 @@
 <header class="main-header">
     <div class="header-content">
         <div class="logo-container">
-            <div class="header-logo">🚀</div>
+            <img src="QAE logo.png" alt="QuantumAxis Engineering Logo" class="header-logo">
         </div>
         <div class="header-center">
             <h1>QuantumAxis Engineering</h1>
