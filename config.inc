@@ -1,19 +1,59 @@
 <?php
-// config.inc - Establishes database connection using settings.php
+// config.inc - Database configuration and functions
+include 'settings.php'; // Include database connection variables
 
-// Include the settings file
-require_once('settings.php');
-
-// Create a connection
+// Create database connection using MySQLi (simpler than PDO)
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-// Check the connection
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Optional: set character encoding
-$conn->set_charset("utf8mb4");
+// Function to get all jobs
+function getAllJobs() {
+    global $conn;
+    
+    // Get ALL jobs (no is_active filter since column doesn't exist)
+    $sql = "SELECT * FROM jobs ORDER BY posted_date DESC";
+    $result = $conn->query($sql);
+    
+    $jobs = [];
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $jobs[] = $row;
+        }
+    }
+    
+    return $jobs;
+}
 
-// You can use $conn in other included PHP files after this
+// Function to get job by reference number
+function getJobByReference($reference) {
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * FROM jobs WHERE reference_number = ?");
+    $stmt->bind_param("s", $reference);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    return $result->fetch_assoc();
+}
+
+// Function to get jobs by category
+function getJobsByCategory($category) {
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * FROM jobs WHERE category = ? ORDER BY posted_date DESC");
+    $stmt->bind_param("s", $category);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $jobs = [];
+    while ($row = $result->fetch_assoc()) {
+        $jobs[] = $row;
+    }
+    
+    return $jobs;
+}
 ?>
