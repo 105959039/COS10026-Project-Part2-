@@ -1,59 +1,47 @@
 <?php
-// config.inc - Database configuration and functions
-include 'settings.php'; // Include database connection variables
+// config.inc - Site-wide configuration
 
-// Create database connection using MySQLi (simpler than PDO)
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+define('SITE_TITLE', 'QuantumAxis Engineering');
+define('COPYRIGHT_YEAR', 2025);
+define('LOGO_PATH', 'images/QAE_logo.png');
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Form settings
+define('FORM_ACTION', 'https://mercury.swin.edu.au/it000000/formtest.php');
 
-// Function to get all jobs
-function getAllJobs() {
-    global $conn;
-    
-    // Get ALL jobs (no is_active filter since column doesn't exist)
-    $sql = "SELECT * FROM jobs ORDER BY posted_date DESC";
-    $result = $conn->query($sql);
-    
-    $jobs = [];
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $jobs[] = $row;
-        }
-    }
-    
-    return $jobs;
-}
+// Job references
+$JOB_REFERENCES = [
+    'AI123' => 'Artificial Intelligence',
+    'CS456' => 'Computer Science',
+    'DS789' => 'Data Science'
+];
 
-// Function to get job by reference number
-function getJobByReference($reference) {
-    global $conn;
-    
-    $stmt = $conn->prepare("SELECT * FROM jobs WHERE reference_number = ?");
-    $stmt->bind_param("s", $reference);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    return $result->fetch_assoc();
-}
+// States and postcode ranges
+$STATE_POSTCODES = [
+    'VIC' => ['min' => 3000, 'max' => 3999],
+    'NSW' => ['min' => 2000, 'max' => 2999],
+    'QLD' => ['min' => 4000, 'max' => 4999],
+    'WA'  => ['min' => 6000, 'max' => 6999],
+    'SA'  => ['min' => 5000, 'max' => 5999],
+    'TAS' => ['min' => 7000, 'max' => 7999],
+    'ACT' => ['min' => 2600, 'max' => 2618],
+    'NT'  => ['min' => 800,  'max' => 999]
+];
 
-// Function to get jobs by category
-function getJobsByCategory($category) {
-    global $conn;
-    
-    $stmt = $conn->prepare("SELECT * FROM jobs WHERE category = ? ORDER BY posted_date DESC");
-    $stmt->bind_param("s", $category);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    $jobs = [];
-    while ($row = $result->fetch_assoc()) {
-        $jobs[] = $row;
-    }
-    
-    return $jobs;
-}
+// Technical skills
+$TECH_SKILLS = [
+    'cybsec' => 'Cybersecurity',
+    'datasci' => 'Data Scientist',
+    'webdev' => 'Web Development',
+    'artint' => 'Artificial Intelligence',
+    'cloud' => 'Cloud Computing',
+    'ml' => 'Machine Learning'
+];
+
+// Social links
+$SOCIAL_LINKS = [
+    'facebook' => 'https://www.facebook.com/profile.php?id=61580514305943',
+    'instagram' => 'https://www.instagram.com/quantumaxis/',
+    'linkedin' => '#',
+    'twitter' => '#'
+];
 ?>

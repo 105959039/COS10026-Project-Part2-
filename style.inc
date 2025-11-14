@@ -1,155 +1,294 @@
-<?php
-// style.inc - CSS styles for jobs page
-?>
 <style>
-    /* Main Content Styles Only */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: #2c3e50;
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    /* Main Content */
     .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
     
-    .content-wrapper {
-        display: flex;
-        gap: 30px;
+    .form-container {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
     }
     
-    .main-content {
-        flex: 3;
-        width: 75%;
-        min-width: 300px;
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 15px;
     }
     
-    .aside-container {
-        flex: 1;
-        width: 25%;
-        min-width: 25%;
-        max-width: 25%;
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      border-radius: 2px;
     }
     
-    section {
-        background: white;
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease;
+    /* Form Elements */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
     
-    section:hover {
-        transform: translateY(-5px);
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
     
-    aside {
-        background: linear-gradient(to bottom, #4a6491, #2c3e50);
-        color: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border: 3px solid #3498db;
-        position: sticky;
-        top: 100px;
+    .form-row {
+      display: flex;
+      gap: 20px;
     }
     
-    aside h3 {
-        color: #fff;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        padding-bottom: 10px;
-        margin-bottom: 20px;
+    .form-row .form-group {
+      flex: 1;
     }
     
-    aside ul {
-        list-style-type: none;
-        margin-left: 0;
+    label {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1.1rem;
     }
     
-    aside li {
-        margin-bottom: 12px;
-        padding-left: 25px;
-        position: relative;
+    input, select, textarea {
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: inherit;
     }
     
-    aside li:before {
-        content: "•";
-        color: #3498db;
-        font-weight: bold;
-        position: absolute;
-        left: 0;
-        font-size: 20px;
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     }
     
-    h2 {
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #3498db;
-        font-size: 1.8rem;
+    select {
+      background-color: #f8f9fa;
+      cursor: pointer;
     }
     
-    h3 {
-        margin: 20px 0 15px;
-        color: #3498db;
-        font-size: 1.4rem;
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
     
-    h4 {
-        margin: 20px 0 12px;
-        color: #2c3e50;
-        font-size: 1.2rem;
+    fieldset {
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
     }
     
-    .decorative-bar {
-        height: 6px;
-        background: linear-gradient(to right, #6a11cb, #2575fc, #2c3e50);
-        border-radius: 3px;
-        margin: 15px 0 25px;
+    legend {
+      font-weight: 600;
+      color: #2c3e50;
+      padding: 0 10px;
+      font-size: 1.1rem;
     }
     
-    .highlight {
-        background: linear-gradient(120deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #6a11cb;
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
     }
     
-    .job-count {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #2c3e50;
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: normal;
+      cursor: pointer;
     }
     
-    @media (max-width: 992px) {
-        .content-wrapper {
-            flex-direction: column;
-        }
-        
-        .main-content,
-        .aside-container {
-            width: 100%;
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-        
-        aside {
-            position: relative;
-            top: 0;
-        }
+    input[type="radio"], input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #3498db;
     }
     
+    /* Submit Button */
+    .submit-btn {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 117, 252, 0.4);
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-links a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive Design */
     @media (max-width: 768px) {
-        section, aside {
-            padding: 20px;
-        }
+      .form-row {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav a {
+        width: 100%;
+        text-align: center;
+      }
     }
     
     @media (max-width: 480px) {
-        section, aside {
-            padding: 18px;
-            margin: 15px 0;
-        }
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .logo-text {
+        font-size: 16px;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      input, select, textarea {
+        padding: 12px;
+      }
     }
+    
+    /* Decorative Elements */
+    .required:after {
+      content: " *";
+      color: #e74c3c;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f1f2f6;
+    }
+    
+    .form-section-title {
+      font-size: 1.3rem;
+      color: #3498db;
+      margin-bottom: 20px;
+      padding-left: 10px;
+      border-left: 4px solid #3498db;
+    }
+    
+    /* Validation Styles */
+    .error-message {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .fieldset-legend {
+      font-weight: 600;
+      color: #2c3e50;
+      padding: 0 10px;
+    }
+    
+    input:invalid, select:invalid {
+      border-color: #e74c3c;
+    }
+    
+    input:valid, select:valid {
+      border-color: #2ecc71;
+    }
+    
+    .age-error {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    .large-textarea {
+    width: 100%;          /* full width of container */
+    min-height: 180px;    /* taller box */
+    max-height: 300px;    /* prevents it from getting too tall */
+    font-size: 16px;      /* readable text */
+    padding: 15px;        /* consistent with other inputs */
+    border-radius: 8px;   /* same style as other inputs */
+    border: 2px solid #e2e8f0;
+    resize: vertical;     /* user can resize vertically */
+    font-family: inherit; /* matches other inputs */
+}
+
 </style>
