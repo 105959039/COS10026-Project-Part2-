@@ -1,66 +1,46 @@
 <!-- header.inc -->
-<style>
-    /* Header Styles */
-    header {
-      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-      color: white;
-      padding: 20px 5%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      position: relative;
-    }
-    
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .logo {
-       width: 120px;
-       height: auto;
-    }
-    
-    .logo-text {
-      font-size: 18px;
-      font-weight: bold;
-      color: #2c3e50;
-      text-align: center;
-    }
-    
-    /* Navigation */
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 15px;
-    }
-    
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-</style>
-<header>
-  <div class="logo-container">
-    <img src="QAElogo.png" alt="QuantumAxis Logo" class="logo">
-  </div>
-
-  <nav>
-    <a href="./index.php">Home</a>
-    <a href="./jobs.php">Job Description</a>
-    <a href="./apply.php">Job Application</a>
-    <a href="./about.php">About</a>
-  </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<header class="header">
+    <h1>Welcome to <br> QuantumAxis <br> Engineering</h1>
 </header>
+
+    <style>
+        
+        .header {
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            text-align: left;
+            padding: 80px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
+        </styles>

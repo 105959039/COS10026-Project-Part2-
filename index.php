@@ -8,6 +8,8 @@ $title = "QuantumAxis Engineering";
 <!DOCTYPE html>
 <html lang="en">
 <?php include('header.inc'); ?>
+
+<?php include('index_styles.inc'); ?>
 <body>
 <?php include('menu.inc'); ?>
     <section id="services">

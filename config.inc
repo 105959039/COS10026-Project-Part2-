@@ -1,47 +1,19 @@
 <?php
-// config.inc - Site-wide configuration
+// config.inc - Establishes database connection using settings.php
 
-define('SITE_TITLE', 'QuantumAxis Engineering');
-define('COPYRIGHT_YEAR', 2025);
-define('LOGO_PATH', 'images/QAE_logo.png');
+// Include the settings file
+require_once('settings.php');
 
-// Form settings
-define('FORM_ACTION', 'process_eoi.php');
+// Create a connection
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-// Job references
-$JOB_REFERENCES = [
-    'AI123' => 'Artificial Intelligence',
-    'CS456' => 'Computer Science',
-    'DS789' => 'Data Science'
-];
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// States and postcode ranges
-$STATE_POSTCODES = [
-    'VIC' => ['min' => 3000, 'max' => 3999],
-    'NSW' => ['min' => 2000, 'max' => 2999],
-    'QLD' => ['min' => 4000, 'max' => 4999],
-    'WA'  => ['min' => 6000, 'max' => 6999],
-    'SA'  => ['min' => 5000, 'max' => 5999],
-    'TAS' => ['min' => 7000, 'max' => 7999],
-    'ACT' => ['min' => 2600, 'max' => 2618],
-    'NT'  => ['min' => 800,  'max' => 999]
-];
+// Optional: set character encoding
+$conn->set_charset("utf8mb4");
 
-// Technical skills
-$TECH_SKILLS = [
-    'cybsec' => 'Cybersecurity',
-    'datasci' => 'Data Scientist',
-    'webdev' => 'Web Development',
-    'artint' => 'Artificial Intelligence',
-    'cloud' => 'Cloud Computing',
-    'ml' => 'Machine Learning'
-];
-
-// Social links
-$SOCIAL_LINKS = [
-    'facebook' => 'https://www.facebook.com/profile.php?id=61580514305943',
-    'instagram' => 'https://www.instagram.com/quantumaxis/',
-    'linkedin' => '#',
-    'twitter' => '#'
-];
+// You can use $conn in other included PHP files after this
 ?>
