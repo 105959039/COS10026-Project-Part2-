@@ -6,7 +6,7 @@ define('COPYRIGHT_YEAR', 2025);
 define('LOGO_PATH', 'images/QAE_logo.png');
 
 // Form settings
-define('FORM_ACTION', 'https://mercury.swin.edu.au/it000000/formtest.php');
+define('FORM_ACTION', 'process_eoi.php');
 
 // Job references
 $JOB_REFERENCES = [

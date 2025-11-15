@@ -8,18 +8,17 @@ include 'style.inc';   // Contains all CSS
     <div class="form-container">
         <h1>Job Application Form</h1>
 
-        <form name="Job Application" id="jobapp" action="https://mercury.swin.edu.au/it000000/formtest.php" method="post" novalidate>
+        <form name="Job Application" id="jobapp" action="process_eoi.php" method='post'>
             <div class="form-section">
                 <h3 class="form-section-title">Position Information</h3>
                 <div class="form-group">
                     <label for="refnum" class="required">Job Reference Number</label>
-                    <select name="refnum" id="refnum" required>
+                    <select name="refnum" id="refnum">
                         <option value="" disabled selected hidden>Select a reference number</option>
                         <option value="AI123">AI123</option>
                         <option value="CS456">CS456</option>
                         <option value="DS789">DS789</option>
                     </select>
-                    <div class="error-message" id="refnumError">Please select a job reference number</div>
                 </div>
             </div>
 
@@ -28,33 +27,29 @@ include 'style.inc';   // Contains all CSS
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname" class="required">First Name</label>
-                        <input type="text" id="firstname" name="firstname" maxlength="20" pattern="^[A-Za-z\s]{1,20}$" required>
-                        <div class="error-message" id="firstnameError">Please enter a valid first name</div>
+                        <input type="text" id="firstname" name="firstname" maxlength="20">
                     </div>
 
                     <div class="form-group">
                         <label for="lastname" class="required">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" maxlength="20" pattern="^[A-Za-z\s]{1,20}$" required>
-                        <div class="error-message" id="lastnameError">Please enter a valid last name</div>
+                        <input type="text" id="lastname" name="lastname" maxlength="20">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="bday" class="required">Date of Birth</label>
-                    <input type="date" id="bday" name="bday" required>
-                    <div class="age-error" id="ageError">You must be at least 18 years old to apply</div>
+                    <input type="date" id="bday" name="bday">
                 </div>
 
                 <div class="form-group">
                     <fieldset>
                         <legend class="fieldset-legend required">Gender</legend>
                         <div class="radio-group">
-                            <label><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" value="Male"> Male</label>
                             <label><input type="radio" name="gender" value="Female"> Female</label>
                             <label><input type="radio" name="gender" value="Other"> Other</label>
                         </div>
                     </fieldset>
-                    <div class="error-message" id="genderError">Please select a gender</div>
                 </div>
             </div>
 
@@ -62,20 +57,18 @@ include 'style.inc';   // Contains all CSS
                 <h3 class="form-section-title">Contact Information</h3>
                 <div class="form-group">
                     <label for="streetaddress" class="required">Street Address</label>
-                    <input type="text" id="streetaddress" name="streetaddress" maxlength="40" pattern="^[A-Za-z0-9\s\.,\-]{5,40}$" required>
-                    <div class="error-message" id="streetaddressError">Please enter a valid street address</div>
+                    <input type="text" id="streetaddress" name="streetaddress" maxlength="40">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="suburb_town" class="required">Suburb/Town</label>
-                        <input type="text" id="suburb_town" name="suburb_town" maxlength="40" pattern="^[A-Za-z\s]{2,40}$" required>
-                        <div class="error-message" id="suburb_townError">Please enter a valid suburb/town</div>
+                        <input type="text" id="suburb_town" name="suburb_town" maxlength="40">
                     </div>
 
                     <div class="form-group">
                         <label for="state_territory" class="required">State</label>
-                        <select name="state_territory" id="state_territory" required>
+                        <select name="state_territory" id="state_territory">
                             <option value="" disabled selected hidden>Select state</option>
                             <option value="VIC">VIC</option>
                             <option value="NSW">NSW</option>
@@ -86,27 +79,23 @@ include 'style.inc';   // Contains all CSS
                             <option value="TAS">TAS</option>
                             <option value="ACT">ACT</option>
                         </select>
-                        <div class="error-message" id="state_territoryError">Please select a state</div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="postcode" class="required">Postcode</label>
-                    <input type="text" id="postcode" name="postcode" pattern="\d{4}" maxlength="4" required>
-                    <div class="error-message" id="postcodeError">Please enter a valid 4-digit postcode</div>
+                    <input type="text" id="postcode" name="postcode" maxlength="4">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="email" class="required">Email</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="error-message" id="emailError">Please enter a valid email</div>
+                        <input type="email" id="email" name="email">
                     </div>
 
                     <div class="form-group">
                         <label for="phone" class="required">Phone</label>
-                        <input type="tel" id="phone" name="phone" required>
-                        <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                        <input type="tel" id="phone" name="phone">
                     </div>
                 </div>
             </div>
@@ -125,21 +114,14 @@ include 'style.inc';   // Contains all CSS
                             <label><input type="checkbox" name="techlist[]" value="ml"> Machine Learning</label>
                         </div>
                     </fieldset>
-                    <div class="error-message" id="techlistError">Please select at least one technical skill</div>
                 </div>
 
                 <div class="other-skills-container">
-                    <div class="other-skills-checkbox">
-                        <input type="checkbox" id="other_skills_checkbox" name="other_skills_checkbox">
-                        <label for="other_skills_checkbox">I have other skills to mention</label>
-                    </div>
-
-                    <div class="other-skills-textarea" id="other_skills_textarea">
-                        <label for="other_skills">Other Skills</label>
+                    <div class="other-skills-textarea">
+                        <label for="other_skills">Other Skills (Optional)</label>
                         <textarea id="other_skills" name="other_skills" 
                                   placeholder="Please describe any other skills or qualifications you have..."
                                   class="large-textarea"></textarea>
-                        <div class="error-message" id="other_skillsError">Please describe your other skills</div>
                     </div>
                 </div>
             </div>
@@ -157,8 +139,5 @@ include 'style.inc';   // Contains all CSS
 </div>
 
 <?php
-include 'footer.inc';  // Contains closing </body> and </html>
+include 'footer.inc';
 ?>
-
-<!-- JS for age check and other validations -->
-<script src="apply.js"></script>
