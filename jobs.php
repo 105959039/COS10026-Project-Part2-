@@ -16,7 +16,7 @@ include 'header.inc';
 // Include menu
 include 'menu.inc';
 // Include styles
-include 'style.inc';
+include 'main style.inc';
 ?>
 
 <div class="container">
